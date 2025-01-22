@@ -34,7 +34,6 @@ brew install --cask applite
 brew install --cask audio-hijack
 brew install --cask cakebrew
 brew install --cask cleanshot
-brew install --cask coteditor
 brew install --cask daisydisk
 brew install --cask discord
 brew install --cask dozer

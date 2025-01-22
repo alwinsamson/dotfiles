@@ -25,56 +25,52 @@ brew install python@3.13
 brew install imagemagick --with-webp
 brew install switchaudio-osx
 
-
-
-brew cask install adobe-acrobat-pro
-brew cask install adobe-creative-cloud
-brew cask install alfred
-brew cask install alt-tab
-brew cask install appcleaner
-brew cask install applite
-brew cask install audio-hijack
-brew cask install cakebrew
-brew cask install cleanshot
-brew cask install coteditor
-brew cask install daisydisk
-brew cask install discord
-brew cask install dozer
-brew cask install dropbox
-brew cask install dropbox
-brew cask install elgato-stream-deck
-brew cask install figma
-brew cask install firefox
-brew cask install github
-brew cask install google-chrome
-brew cask install hazel
-brew cask install hush
-brew cask install iina
-brew cask install imageoptim
-brew cask install iterm2
-brew cask install jordanbaird-ice
-brew cask install karabiner-elements
-brew cask install keyboard-maestro
-brew cask install latest
-brew cask install latest
-brew cask install luLu
-brew cask install macwhisper
-brew cask install magicquit
-brew cask install microsoft-excel
-brew cask install microsoft-word
-brew cask install namechanger
-brew cask install notion
-brew cask install Obsidian
-brew cask install onyx
-brew cask install post-haste
-brew cask install raindropio
-brew cask install raycast
-brew cask install script-debugger
-brew cask install spotify
-brew cask install stats
-brew cask install thingsmacsandboxhelper
-brew cask install visual-studio-code
-brew cask install whatsapp
+brew install --cask adobe-acrobat-pro
+brew install --cask adobe-creative-cloud
+brew install --cask alfred
+brew install --cask alt-tab
+brew install --cask appcleaner
+brew install --cask applite
+brew install --cask audio-hijack
+brew install --cask cakebrew
+brew install --cask cleanshot
+brew install --cask daisydisk
+brew install --cask discord
+brew install --cask dozer
+brew install --cask dropbox
+brew install --cask dropbox
+brew install --cask elgato-stream-deck
+brew install --cask figma
+brew install --cask firefox
+brew install --cask github
+brew install --cask google-chrome
+brew install --cask hazel
+brew install --cask hush
+brew install --cask iina
+brew install --cask imageoptim
+brew install --cask iterm2
+brew install --cask jordanbaird-ice
+brew install --cask karabiner-elements
+brew install --cask keyboard-maestro
+brew install --cask latest
+brew install --cask luLu
+brew install --cask macwhisper
+brew install --cask magicquit
+brew install --cask microsoft-excel
+brew install --cask microsoft-word
+brew install --cask namechanger
+brew install --cask notion
+brew install --cask Obsidian
+brew install --cask onyx
+brew install --cask post-haste
+brew install --cask raindropio
+brew install --cask raycast
+brew install --cask script-debugger
+brew install --cask spotify
+brew install --cask stats
+brew install --cask thingsmacsandboxhelper
+brew install --cask visual-studio-code
+brew install --cask whatsapp
 
 mas install 1586435171  # Actions
 mas install 1440147259  # AdGuard for Safari
@@ -106,9 +102,7 @@ mas install 425424353  # The Unarchiver
 mas install 904280696  # Things
 mas install 1425368544  # Timery
 mas install 1607635845  # Velja
-mas install 1607635845  # Velja
 mas install 497799835  # Xcode
-
 
 # Remove outdated versions from the cellar.
 brew cleanup

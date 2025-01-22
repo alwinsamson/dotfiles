@@ -212,7 +212,9 @@ defaults write com.apple.Siri StatusMenuVisible -int 0
 defaults write com.apple.menuextra.battery "ShowAllTopProcesses" -bool true
 
 # Hide Spotlight Icon
-defaults write com.apple.Spotlight "NSStatusItem Visible Item-0" 0
+#defaults write com.apple.Spotlight "NSStatusItem Visible Item-0" 0
+# Hide Spotlight Icon (Worked on 15.2)
+defaults -currentHost write com.apple.Spotlight MenuItemHidden -int 1
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #

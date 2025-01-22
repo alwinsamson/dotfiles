@@ -34,10 +34,10 @@ brew install --cask applite
 brew install --cask audio-hijack
 brew install --cask cakebrew
 brew install --cask cleanshot
+brew install --cask coteditor
 brew install --cask daisydisk
 brew install --cask discord
 brew install --cask dozer
-brew install --cask dropbox
 brew install --cask dropbox
 brew install --cask elgato-stream-deck
 brew install --cask figma
@@ -103,6 +103,7 @@ mas install 904280696  # Things
 mas install 1425368544  # Timery
 mas install 1607635845  # Velja
 mas install 497799835  # Xcode
+
 
 # Remove outdated versions from the cellar.
 brew cleanup

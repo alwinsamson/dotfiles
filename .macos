@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-
-
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -13,23 +11,43 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
-# General UI/UX                                                               #
+# Settings -> Sound                                                           #
 ###############################################################################
 
-# Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "0x416C77696E"
-sudo scutil --set HostName "0x416C77696E"
-sudo scutil --set LocalHostName "0x416C77696E"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x416C77696E"
+ # Alert sound: Boop
+defaults write .GlobalPreferences com.apple.sound.beep.sound -string "/System/Library/Sounds/Tink.aiff"
+
+# Alert volume
+defaults write .GlobalPreferences com.apple.sound.beep.volume -float 0.914856
+
+# Play feedback when volume is changed
+defaults write .GlobalPreferences com.apple.sound.beep.feedback -bool true
 
 # Disable the sound effects on boot
-# sudo nvram SystemAudioVolume=" "
+sudo nvram SystemAudioVolume=" "
 
-# Disable transparency in the menu bar and elsewhere on Yosemite
-defaults write com.apple.universalaccess reduceTransparency -bool true
+###############################################################################
+# Settings -> Appearance                                                      #
+# NOTE: appearance change requires restart                                    #
+###############################################################################
 
-# Set highlight color to green
-# defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
+# Appearance
+defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
+defaults write .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically -bool true
+
+# Accent color: Blue
+defaults write .GlobalPreferences AppleAccentColor -string "4"
+
+# Use Blue Highlight Color
+defaults write NSGlobalDomain AppleHighlightColor -string "0.698039 0.843137 1.000000"
+# Blue = "0.698039 0.843137 1.000000"
+# Purple = "0.968627 0.831373 1.000000"
+# Pink = "1.000000 0.749020 0.823529"
+# Red = "1.000000 0.733333 0.721569"
+# Orange = "1.000000 0.874510 0.701961"
+# Yellow = "1.000000 0.937255 0.690196"
+# Green = "0.752941 0.964706 0.678431"
+# Graphite = "0.847059 0.847059 0.862745"
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -38,11 +56,40 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
+###############################################################################
+# Settings -> Siri                                                            #
+###############################################################################
+
+# Hide Siri
+defaults write com.apple.siri "StatusMenuVisible" 0
+defaults write com.apple.systemuiserver "NSStatusItem Visible Siri" 0
+
+###############################################################################
+# Settings -> Control Center                                                  #
+###############################################################################
+
+
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
+# Set computer name (as done via System Preferences → Sharing)
+sudo scutil --set ComputerName "AlwinMac"
+sudo scutil --set HostName "AlwinMac"
+sudo scutil --set LocalHostName "AlwinMac"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "AlwinMac"
+
+# Disable transparency in the menu bar and elsewhere on Yosemite
+defaults write com.apple.universalaccess reduceTransparency -bool true
+
 # Disable the over-the-top focus ring animation
 # defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 
 # Adjust toolbar title rollover delay
 defaults write NSGlobalDomain NSToolbarTitleViewRolloverDelay -float 0
+
+# Show file icon in title bar without delay
+defaults write -g NSToolbarTitleViewRolloverDelay -float 0
 
 # Disable smooth scrolling
 # (Uncomment if you’re on an older Mac that messes up the animation)
@@ -79,7 +126,7 @@ defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
-# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
@@ -121,8 +168,58 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 #sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
 
 ###############################################################################
+# Menu Bar                                                                    #
+###############################################################################
+# Wi-Fi: Show in Menu Bar
+defaults -currentHost write com.apple.controlcenter WiFi -int 2
+# Bluetooth: show in menu bar
+defaults -currentHost write com.apple.controlcenter Bluetooth -int 18
+# Sound: always show in menu bar
+defaults -currentHost write com.apple.controlcenter Sound -int 18
+# Battery
+defaults -currentHost write com.apple.controlcenter Battery int 4
+# Battery - show percentage
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+# Battery - show Energy Mode
+defaults -currentHost write com.apple.controlcenter BatteryShowEnergyMode -bool true
+# Display
+defaults -currentHost write com.apple.controlcenter Display int 18
+# Hearing
+defaults -currentHost write com.apple.controlcenter Hearing -bool true
+# Voice Control
+defaults -currentHost write com.apple.controlcenter VoiceControl int 8
+
+# Clock options... Flash Date Separators
+defaults write com.apple.menuextra.clock FlashDateSeparators -int 0
+# Clock options... Analog
+defaults write com.apple.menuextra.clock IsAnalog -int 0
+# Clock options... show 24 Hour
+defaults write com.apple.menuextra.clock Show24Hour -int 0
+# Clock options... show AM/PM: false
+defaults write com.apple.menuextra.clock Show24Hour -int 0
+# Clock options... show Date
+defaults write com.apple.menuextra.clock ShowDate -int 1
+# Clock options... show Day Of Week
+defaults write com.apple.menuextra.clock ShowDayOfWeek -int 1
+# Clock options... show Seconds
+defaults write com.apple.menuextra.clock ShowSeconds -int 1
+
+# Siri: don't show in menu bar
+defaults write com.apple.Siri StatusMenuVisible -int 0
+
+
+# Show all processess under energy consumption
+defaults write com.apple.menuextra.battery "ShowAllTopProcesses" -bool true
+
+# Hide Spotlight Icon
+defaults write com.apple.Spotlight "NSStatusItem Visible Item-0" 0
+
+###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
+
+# Disable volume key feedback
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -float 0
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -162,7 +259,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
 # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 defaults write NSGlobalDomain AppleLanguages -array "en" "US"
-defaults write NSGlobalDomain AppleLocale -string "en_GB@currency=USD"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
 
@@ -260,6 +357,9 @@ defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+
+# Finder: allow text selection in Quick Look
+defaults write com.apple.finder QLEnableTextSelection -bool true
 
 # Finder: show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -359,11 +459,23 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
+# Remove all permanent apps from the dock
+defaults write com.apple.dock persistent-apps -array
+
+# Minimal Dock
+defaults write com.apple.dock no-glass -bool true
+
+# Move Dock to the left
+defaults write com.apple.dock orientation -string "left"
+
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
 # Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 36
+
+# Prevent the Dock from changing size
+defaults write com.apple.dock size-immutable -bool YES
 
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "genie"
@@ -376,6 +488,9 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
+
+# Prevent icons from bouncing
+defaults write com.apple.dock no-bouncing -bool true
 
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
@@ -403,6 +518,9 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
+
+# Set edge-dragging delay to 1.0
+defaults write com.apple.dock workspaces-edge-delay -float 1.0
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0

@@ -5,10 +5,15 @@ brew install coreutils
 brew install findutils
 
 # Switch to using brew-installed bash as default shell
-if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
-  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
-  chsh -s "${BREW_PREFIX}/bin/bash";
-fi;
+# fgrep is deprecated updated the script to grep
+# if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
+#   echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells;
+#   chsh -s "${BREW_PREFIX}/bin/bash";
+# fi;
+if ! grep -Fxq "${BREW_PREFIX}/bin/bash" /etc/shells; then
+  echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells
+  chsh -s "${BREW_PREFIX}/bin/bash"
+fi
 
 # Install `wget` with IRI support.
 brew install wget --with-iri
@@ -24,6 +29,9 @@ brew install libzip
 brew install python@3.13
 brew install imagemagick --with-webp
 brew install switchaudio-osx
+brew install bitwarden-cli
+brew install fd
+
 
 brew install --cask adobe-acrobat-pro
 brew install --cask adobe-creative-cloud
@@ -32,7 +40,6 @@ brew install --cask alt-tab
 brew install --cask appcleaner
 brew install --cask applite
 brew install --cask audio-hijack
-brew install --cask cakebrew
 brew install --cask cleanshot
 brew install --cask daisydisk
 brew install --cask discord
@@ -51,6 +58,7 @@ brew install --cask iterm2
 brew install --cask jordanbaird-ice
 brew install --cask karabiner-elements
 brew install --cask keyboard-maestro
+brew install --cask keka
 brew install --cask latest
 brew install --cask luLu
 brew install --cask macwhisper
@@ -87,7 +95,6 @@ mas install 424389933  # Final Cut Pro
 mas install 1351639930  # Gifski
 mas install 1544743900  # Hush
 mas install 6504801865  # JuxtaText
-mas install 470158793  # Keka
 mas install 414568915  # Key Codes
 mas install 634148309  # Logic Pro
 mas install 1659154653  # Mona
@@ -102,7 +109,7 @@ mas install 904280696  # Things
 mas install 1425368544  # Timery
 mas install 1607635845  # Velja
 mas install 497799835  # Xcode
-
+mas install 747648890  # Telegram
 
 # Remove outdated versions from the cellar.
 brew cleanup

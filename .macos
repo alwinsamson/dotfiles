@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# ~/.macos — https://github.com/jeffbyrnes/dotfiles/blob/master/.macos
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -35,8 +37,13 @@ sudo nvram SystemAudioVolume=" "
 defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
 defaults write .GlobalPreferences AppleInterfaceStyleSwitchesAutomatically -bool true
 
+# Accent colors (M1 Based accent colors)
+defaults write -g NSColorSimulateHardwareAccent -bool YES
+# Yellow:3, Green: 4, Blue: 5, Pink: 6, Purple: 7, Orange: 8
+defaults write -g NSColorSimulatedHardwareEnclosureNumber -int 4
+
 # Accent color: Blue
-defaults write .GlobalPreferences AppleAccentColor -string "4"
+# defaults write .GlobalPreferences AppleAccentColor -string "4"
 
 # Use Blue Highlight Color
 defaults write NSGlobalDomain AppleHighlightColor -string "0.698039 0.843137 1.000000"
@@ -126,7 +133,7 @@ defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
-defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+# defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
@@ -188,7 +195,6 @@ defaults -currentHost write com.apple.controlcenter Display int 18
 defaults -currentHost write com.apple.controlcenter Hearing -bool true
 # Voice Control
 defaults -currentHost write com.apple.controlcenter VoiceControl int 8
-
 # Clock options... Flash Date Separators
 defaults write com.apple.menuextra.clock FlashDateSeparators -int 0
 # Clock options... Analog
@@ -203,18 +209,17 @@ defaults write com.apple.menuextra.clock ShowDate -int 1
 defaults write com.apple.menuextra.clock ShowDayOfWeek -int 1
 # Clock options... show Seconds
 defaults write com.apple.menuextra.clock ShowSeconds -int 1
-
 # Siri: don't show in menu bar
 defaults write com.apple.Siri StatusMenuVisible -int 0
-
-
 # Show all processess under energy consumption
 defaults write com.apple.menuextra.battery "ShowAllTopProcesses" -bool true
-
 # Hide Spotlight Icon
 #defaults write com.apple.Spotlight "NSStatusItem Visible Item-0" 0
 # Hide Spotlight Icon (Worked on 15.2)
 defaults -currentHost write com.apple.Spotlight MenuItemHidden -int 1
+# Menu Bar Spacing (https://apple.stackexchange.com/questions/406316/can-the-spacing-of-menu-bar-apps-be-modified-in-macos-big-sur-and-later/465674#465674)
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 7
+defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 7
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
@@ -264,6 +269,9 @@ defaults write NSGlobalDomain AppleLanguages -array "en" "US"
 defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
 defaults write NSGlobalDomain AppleMetricUnits -bool false
+
+# Dragging with three finger drag (https://macos-defaults.com/trackpad/trackpadthreefingerdrag.html)
+defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool "true"
 
 # Show language menu in the top right corner of the boot screen
 # sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
@@ -381,6 +389,9 @@ defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
+# Disable Recent Tags
+defaults write com.apple.finder ShowRecentTags -bool false
+
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
@@ -426,7 +437,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
 
 # Increase the size of icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 48" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 80" ~/Library/Preferences/com.apple.finder.plist
 
@@ -579,6 +590,9 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 defaults write com.apple.dock wvous-br-corner -int 4
 defaults write com.apple.dock wvous-br-modifier -int 0
 
+# Tiled windows have margins turned off
+defaults read com.apple.WindowManager EnableTiledWindowMargins -int 0
+
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
@@ -603,8 +617,8 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 # Allow hitting the Backspace key to go to the previous page in history
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled -bool true
 
-# Hide Safari’s bookmarks bar by default
-# defaults write com.apple.Safari ShowFavoritesBar -bool false
+# Show Safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool true
 
 # Hide Safari’s sidebar in Top Sites
 # defaults write com.apple.Safari ShowSidebarInTopSites -bool false
@@ -746,7 +760,7 @@ sudo mdutil -E / > /dev/null
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
-# defaults write com.apple.terminal StringEncodings -array 4
+defaults write com.apple.terminal StringEncodings -array 4
 
 # # Use a modified version of the Solarized Dark theme by default in Terminal.app
 # osascript <<EOD
@@ -858,6 +872,8 @@ defaults write com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+# Open new document by default
+defaults write com.apple.TextEdit NSShowAppCentricOpenPanelInsteadOfUntitledFile -bool false
 
 # Enable the debug menu in Disk Utility
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true

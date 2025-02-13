@@ -165,6 +165,9 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
+# Disable persisant system update notification
+defaults write com.apple.systempreferences AttentionPrefBundleIDs '{ "com.apple.preferences.softwareupdate" = 0; }'
+
 # Disable auto-correct
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 

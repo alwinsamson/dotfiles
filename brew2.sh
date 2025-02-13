@@ -101,7 +101,7 @@ mas install 1659154653  # Mona
 mas install 1540160809  # OneTab
 mas install 1471867429  # OTP Auth
 mas install 409201541  # Pages
-mas install 1289583905  # Pixelmator Pro
+mas install 1444636541  # Photomator
 mas install 1596506190  # Play
 mas install 1667260533  # Sketch: digital design toolkit
 mas install 425424353  # The Unarchiver

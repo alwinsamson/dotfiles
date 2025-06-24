@@ -1,6 +1,9 @@
 # Alwin’s dotfiles
+<<<<<<< HEAD
 
 ![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
+=======
+>>>>>>> 53f69cb3d6137af1f9a3f6afc7584d7dce259a33
 
 ## Installation
 
@@ -51,17 +54,6 @@ export PATH="/usr/local/bin:$PATH"
 If `~/.extra` exists, it will be sourced along with the other files. You can use this to add a few custom commands without the need to fork this entire repository, or to add commands you don’t want to commit to a public repository.
 
 My `~/.extra` looks something like this:
-
-```bash
-# Git credentials
-# Not in the repository, to prevent people from accidentally committing under my name
-GIT_AUTHOR_NAME="Mathias Bynens"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="mathias@mailinator.com"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
-```
 
 You could also use `~/.extra` to override settings, functions and aliases from my dotfiles repository. It’s probably better to [fork this repository](https://github.com/mathiasbynens/dotfiles/fork) instead, though.
 

@@ -32,7 +32,6 @@ brew install --cask alt-tab
 brew install --cask appcleaner
 brew install --cask applite
 brew install --cask audio-hijack
-brew install --cask cakebrew
 brew install --cask cleanshot
 brew install --cask daisydisk
 brew install --cask discord
@@ -51,6 +50,7 @@ brew install --cask iterm2
 brew install --cask jordanbaird-ice
 brew install --cask karabiner-elements
 brew install --cask keyboard-maestro
+brew install --cask keka
 brew install --cask latest
 brew install --cask luLu
 brew install --cask macwhisper
@@ -70,6 +70,8 @@ brew install --cask stats
 brew install --cask thingsmacsandboxhelper
 brew install --cask visual-studio-code
 brew install --cask whatsapp
+brew install --cask chatgpt
+brew install --cask cursor
 
 mas install 1586435171  # Actions
 mas install 1440147259  # AdGuard for Safari
@@ -87,7 +89,6 @@ mas install 424389933  # Final Cut Pro
 mas install 1351639930  # Gifski
 mas install 1544743900  # Hush
 mas install 6504801865  # JuxtaText
-mas install 470158793  # Keka
 mas install 414568915  # Key Codes
 mas install 634148309  # Logic Pro
 mas install 1659154653  # Mona
@@ -102,6 +103,7 @@ mas install 904280696  # Things
 mas install 1425368544  # Timery
 mas install 1607635845  # Velja
 mas install 497799835  # Xcode
+
 
 
 # Remove outdated versions from the cellar.

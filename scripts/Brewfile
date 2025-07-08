@@ -1,0 +1,183 @@
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
+# Connect and disconnect Bluetooth devices
+brew "bluetoothconnector"
+# Get/set bluetooth power and discoverable state
+brew "blueutil"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
+# Emacs dependency management
+brew "cask"
+# Ruby environment tool
+brew "chruby"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
+# Collection of GNU find, xargs, and locate
+brew "findutils"
+# Distributed revision control system
+brew "git"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Improved top (interactive process viewer)
+brew "htop"
+# C library for reading, creating, and modifying zip archives
+brew "libzip"
+# Mac App Store command-line interface
+brew "mas"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.13"
+# Powerful, clean, object-oriented scripting language
+brew "ruby"
+# Change macOS audio source from the command-line
+brew "switchaudio-osx"
+# Internet file retriever
+brew "wget"
+# View, create, manipulate, print and manage files in Portable Document Format
+cask "adobe-acrobat-pro"
+# Collection of apps and services for photography, design, video, web, and UX
+cask "adobe-creative-cloud"
+# Application launcher and productivity software
+cask "alfred"
+# Enable Windows-like alt-tab
+cask "alt-tab"
+# Application uninstaller
+cask "appcleaner"
+# User-friendly GUI app for Homebrew
+cask "applite"
+# Records audio from any application
+cask "audio-hijack"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
+# Screen capturing tool
+cask "cleanshot"
+# Write, edit, and chat about your code with AI
+cask "cursor"
+# Disk space visualiser
+cask "daisydisk"
+# Voice and text chat software
+cask "discord"
+# Client for the Dropbox cloud storage service
+cask "dropbox"
+# Assign keys, and then decorate and label them
+cask "elgato-stream-deck"
+# Collaborative team software
+cask "figma"
+# Web browser
+cask "firefox"
+# Desktop client for GitHub repositories
+cask "github"
+# Web browser
+cask "google-chrome"
+# Automated organisation
+cask "hazel"
+# Block nags to accept cookies and privacy invasive tracking in Safari
+cask "hush"
+# Free and open-source media player
+cask "iina"
+# Tool to optimise images to a smaller size
+cask "imageoptim"
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2"
+# Menu bar manager
+cask "jordanbaird-ice"
+# Keyboard customiser
+cask "karabiner-elements"
+# File archiver
+cask "keka"
+# Automation software
+cask "keyboard-maestro"
+# Utility that shows the latest app updates
+cask "latest"
+# Open-source firewall to block unknown outgoing connections
+cask "lulu"
+# Speech recognition tool
+cask "macwhisper"
+# Efficiency tool for automatically closing apps when they are not in use
+cask "magicquit"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Spreadsheet software
+cask "microsoft-excel"
+# Word processor
+cask "microsoft-word"
+# Rename a list of files quickly
+cask "namechanger"
+# App to write, plan, collaborate, and get organised
+cask "notion"
+# Knowledge base that works on top of a local folder of plain text Markdown files
+cask "obsidian"
+# Verify system files structure, run miscellaneous maintenance and more
+cask "onyx"
+# Digital media project management tool
+cask "post-haste"
+# All-in-one bookmark manager
+cask "raindropio"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Integrated development environment focused entirely on AppleScript
+cask "script-debugger"
+# Music streaming service
+cask "spotify"
+# System monitor for the menu bar
+cask "stats"
+# Helper application for Things
+cask "thingsmacsandboxhelper"
+# Open-source code editor
+cask "visual-studio-code"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+mas "Actions", id: 1586435171
+mas "AdGuard for Safari", id: 1440147259
+mas "Amphetamine", id: 937984704
+mas "Bakery", id: 1575220747
+mas "Bitwarden", id: 1352778147
+mas "ColorSlurp", id: 1287239339
+mas "Compressor", id: 424390742
+mas "Copilot", id: 1447330651
+mas "CotEditor", id: 1024640650
+mas "Drafts", id: 1435957248
+mas "Fantastical", id: 975937182
+mas "Final Cut Pro", id: 424389933
+mas "Gifski", id: 1351639930
+mas "Hush", id: 1544743900
+mas "JuxtaText", id: 6504801865
+mas "Key Codes", id: 414568915
+mas "Logic Pro", id: 634148309
+mas "Mona", id: 1659154653
+mas "OneTab", id: 1540160809
+mas "OTP Auth", id: 1471867429
+mas "Pages", id: 409201541
+mas "Photomator", id: 1444636541
+mas "Pixelmator Pro", id: 1289583905
+mas "Play", id: 1596506190
+mas "Telegram", id: 747648890
+mas "The Unarchiver", id: 425424353
+mas "Things", id: 904280696
+mas "Timery", id: 1425368544
+mas "Velja", id: 1607635845
+mas "Xcode", id: 497799835
+vscode "daltonmenezes.aura-theme"
+vscode "dracula-theme.theme-dracula"
+vscode "esbenp.prettier-vscode"
+vscode "fabian-hiller.pace-theme"
+vscode "fey.oscura"
+vscode "github.copilot"
+vscode "github.copilot-chat"
+vscode "github.github-vscode-theme"
+vscode "mohsen1.prettify-json"
+vscode "ms-python.debugpy"
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"
+vscode "mthierman.theme-flexoki"
+vscode "tal7aouy.theme"
+vscode "timonwong.shellcheck"
+vscode "whizkydee.material-palenight-theme"
+vscode "yuichinukiyama.vscode-preview-server"
+vscode "yzhang.markdown-all-in-one"
+vscode "zainchen.json"

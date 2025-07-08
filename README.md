@@ -1,9 +1,4 @@
 # Alwin’s dotfiles
-<<<<<<< HEAD
-
-![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
-=======
->>>>>>> 53f69cb3d6137af1f9a3f6afc7584d7dce259a33
 
 ## Installation
 

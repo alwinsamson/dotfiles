@@ -1,27 +1,33 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-cd "$(dirname "${BASH_SOURCE}")";
+# ─── Detect repo root (works from anywhere) ────────────────────────
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-git pull origin main;
+# ─── Flags ─────────────────────────────────────────────────────────
+MINIMAL=0
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --minimal) MINIMAL=1 ;;
+    --help|-h) echo "Usage: bootstrap.sh [--minimal]"; exit 0 ;;
+    *) echo "Unknown flag: $1"; exit 1 ;;
+  esac; shift
+done
 
-function doIt() {
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "bootstrap.sh" \
-		--exclude "README.md" \
-		--exclude "LICENSE-MIT.txt" \
-		-avh --no-perms . ~;
-	source ~/.bash_profile;
-}
+# ─── Run each step script in order ────────────────────────────────
+for step in "$REPO_DIR"/scripts/[0-9][0-9]-*.sh; do
+  STEP_NAME=$(basename "$step")
+  echo "▶︎ $STEP_NAME"
+  MINIMAL="$MINIMAL" bash "$step"
+done
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt;
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt;
-	fi;
-fi;
-unset doIt;
+# ── Aliases setup ─────────────────────────────────────────────────
+ALIASES_SRC="${REPO_DIR}/.aliases"
+ALIASES_LINK="${HOME}/.aliases"
+ln -sf "$ALIASES_SRC" "$ALIASES_LINK"
+SOURCE_SNIPPET='[[ -f ~/.aliases ]] && source ~/.aliases'
+grep -qxF "$SOURCE_SNIPPET" ~/.zshrc || printf '\n%s\n' "$SOURCE_SNIPPET" >> ~/.zshrc
+echo "• Aliases linked and sourced."
+
+echo "✅  All done! Open a new terminal or run 'exec \$SHELL -l'."
+

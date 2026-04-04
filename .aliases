@@ -9,7 +9,7 @@ alias .....="cd ../../../.."
 alias -- -="cd -"
 
 # Shortcuts
-alias d="cd ~/Documents/Dropbox"
+alias d='cd ~/Documents/'
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 # alias p="cd ~/projects"
@@ -56,7 +56,13 @@ alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+ip() {
+  echo "Internal IPv4: $(ipconfig getifaddr en0 || ipconfig getifaddr en1)"
+  echo "Internal IPv6: $(ifconfig en0 | awk '/inet6 / && $2 !~ /^fe80/ && $2 != "::1" { print $2; exit }')"
+  echo "External IPv4: $(curl -s https://ipv4.icanhazip.com)"
+  echo "External IPv6: $(curl -s https://ipv6.icanhazip.com)"
+}
+# alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
@@ -84,7 +90,7 @@ jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources
 unset jscbin;
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+# alias c="tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"

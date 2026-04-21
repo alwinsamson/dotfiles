@@ -21,13 +21,11 @@ for step in "$REPO_DIR"/scripts/[0-9][0-9]-*.sh; do
   MINIMAL="$MINIMAL" bash "$step"
 done
 
-# ── Aliases setup ─────────────────────────────────────────────────
-ALIASES_SRC="${REPO_DIR}/.aliases"
-ALIASES_LINK="${HOME}/.aliases"
-ln -sf "$ALIASES_SRC" "$ALIASES_LINK"
-SOURCE_SNIPPET='[[ -f ~/.aliases ]] && source ~/.aliases'
-grep -qxF "$SOURCE_SNIPPET" ~/.zshrc || printf '\n%s\n' "$SOURCE_SNIPPET" >> ~/.zshrc
-echo "• Aliases linked and sourced."
+# ── Dotfile symlinks ──────────────────────────────────────────────
+for dotfile in .aliases .zshrc; do
+  ln -sf "${REPO_DIR}/${dotfile}" "${HOME}/${dotfile}"
+  echo "• ${dotfile} linked."
+done
 
 echo "✅  All done! Open a new terminal or run 'exec \$SHELL -l'."
 
